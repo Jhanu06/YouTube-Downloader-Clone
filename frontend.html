@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Downloader</title>
+</head>
+<body>
+    <h1>Download Video</h1>
+    <form id="download-form">
+        <label for="link">Video URL:</label>
+        <input type="text" id="link" name="link" required><br><br>
+        <button type="submit">Download</button>
+    </form>
+    <p id="result"></p>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('download-form').addEventListener('submit', async function(event) {
+                event.preventDefault();
+                
+                const formData = new FormData();
+                formData.append('link', document.getElementById('link').value);
+
+                const response = await fetch('http://127.0.0.1:8000/download', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+                document.getElementById('result').innerText = result.status;
+            });
+        });
+    </script>
+</body>
+</html>
