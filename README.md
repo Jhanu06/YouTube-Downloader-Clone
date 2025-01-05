@@ -1,6 +1,3 @@
-Here’s a comprehensive and well-structured README file content for your **YouTube Video Downloader Clone** project:  
-
----
 
 # YouTube Video Downloader Clone  
 
